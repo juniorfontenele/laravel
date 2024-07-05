@@ -1,0 +1,64 @@
+{
+    "name": "laravel",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose",
+
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "remote.autoForwardPorts": false,
+          "editor.tabSize": 4,
+          "editor.insertSpaces": true,
+          "editor.detectIndentation": false
+        },
+        "extensions": [
+          "devsense.composer-php-vscode",
+          "devsense.intelli-php-vscode",
+          "devsense.phptools-vscode",
+          "devsense.profiler-php-vscode",
+          "EditorConfig.EditorConfig",
+          "felixfbecker.php-debug",
+          "felixfbecker.php-intellisense",
+          "github.copilot",
+          "github.copilot-chat",
+          "github.vscode-github-actions",
+          "github.vscode-pull-request-github",
+          "gitkraken.gitkraken-authentication",
+          "ihunte.laravel-blade-wrapper",
+          "jpoissonnier.vscode-styled-components",
+          "mechatroner.rainbow-csv",
+          "mhutchie.git-graph",
+          "ms-vsliveshare.vsliveshare",
+          "naoray.laravel-goto-components",
+          "naumovs.color-highlight",
+          "neilbrayfield.php-docblocker",
+          "nhedger.inertia",
+          "onecentlin.laravel-blade",
+          "onecentlin.laravel-extension-pack",
+          "onecentlin.laravel5-snippets",
+          "pgl.laravel-jump-controller",
+          "ryannaddy.laravel-artisan",
+          "shufo.vscode-blade-formatter",
+          "shd101wyy.markdown-preview-enhanced",
+          "visualstudioexptteam.intellicode-api-usage-examples",
+          "visualstudioexptteam.vscodeintellicode",
+          "vue.volar",
+          "xdebug.php-debug",
+          "xdebug.php-pack",
+          "yzhang.markdown-all-in-one",
+          "zobo.php-intellisense"
+        ]
+      }
+    },
+
+    "initializeCommand": "if [ ! -f .env ]; then cp .env.example .env; fi && if ! grep -q \"WWWUSER_ID=\" .env; then echo \"WWWUSER_ID=$(id -u)\" >> .env; fi && if ! grep -q \"WWWGROUP_ID=\" .env; then echo \"WWWGROUP_ID=$(id -g)\" >> .env; fi && if ! grep -q \"^APP_KEY=base64\" .env; then NEW_KEY=\"base64:$(openssl rand -base64 32)\"; sed -i \"s|^APP_KEY=.*|APP_KEY=$NEW_KEY|\" .env; fi",
+
+    "postCreateCommand": "echo 'alias a=\"php /app/artisan\"' >> ~/.bashrc",
+
+    "overrideCommand": false,
+
+    // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "sail"
+  }
