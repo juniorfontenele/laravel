@@ -3,13 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Traits\HasActiveState;
+use App\Traits\HasCreator;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
+    use HasActiveState;
+    use HasCreator;
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +48,13 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_global_admin' => 'boolean',
+            'is_active' => 'boolean',
         ];
+    }
+
+    public function isGlobalAdmin(): bool
+    {
+        return $this->is_global_admin;
     }
 }

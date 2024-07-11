@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Traits\HasActiveState;
+use App\Traits\HasCreator;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+    use HasActiveState;
+    use HasCreator;
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+}
