@@ -20,7 +20,7 @@ interface AppEvent
 
     public function getLevel(): string;
 
-    public function getSubject(): Model|null;
+    public function getSubject(): ?Model;
 
     public function getFullContext(): array;
 

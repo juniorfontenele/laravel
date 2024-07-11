@@ -29,16 +29,16 @@ class OnDeploy extends Command
     {
         $isolated = '';
 
-        $this->info('🎬 Application environment: ' . app()->environment());
+        $this->info('🎬 Application environment: '.app()->environment());
         $this->info('🎬 Running deploy commands...');
 
-        if (!app()->environment('local') || $this->option('force')) {
+        if (! app()->environment('local') || $this->option('force')) {
             if (Schema::hasTable('cache_locks')) {
                 $isolated = '--isolated';
             }
 
             $this->info('🎬 Running migrations...');
-            Artisan::call('migrate --no-interaction --force ' . $isolated);
+            Artisan::call('migrate --no-interaction --force '.$isolated);
             $this->info('🎬 Migrations done!');
         }
 

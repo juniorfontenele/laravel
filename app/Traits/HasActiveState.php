@@ -13,7 +13,7 @@ trait HasActiveState
 
     public function isInactive(): bool
     {
-        return !$this->is_active;
+        return ! $this->is_active;
     }
 
     public function activate(): void
@@ -30,7 +30,7 @@ trait HasActiveState
 
     public function toggleActiveState(): void
     {
-        $this->is_active = !$this->is_active;
+        $this->is_active = ! $this->is_active;
         $this->save();
     }
 

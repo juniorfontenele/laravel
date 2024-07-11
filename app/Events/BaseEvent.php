@@ -1,15 +1,21 @@
 <?php
 
 namespace App\Events;
+
 use App\Contracts\AppEvent;
 
 abstract class BaseEvent implements AppEvent
 {
     public int $id = -1;
+
     public string $name = 'Base Event';
+
     public string $level = 'debug';
+
     public array $context = [];
+
     public bool $shouldLog = true;
+
     public bool $shouldExternalLog = true;
 
     public function getId(): int
@@ -24,7 +30,7 @@ abstract class BaseEvent implements AppEvent
 
     public function getLevel(): string
     {
-        if (!in_array($this->level, ['debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert', 'emergency'])) {
+        if (! in_array($this->level, ['debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert', 'emergency'])) {
             return 'debug';
         }
 
@@ -108,5 +114,4 @@ abstract class BaseEvent implements AppEvent
     {
         return $this->shouldExternalLog;
     }
-
 }
